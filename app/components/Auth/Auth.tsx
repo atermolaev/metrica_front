@@ -14,7 +14,7 @@ const Auth: React.FC = () => {
     }
 
     return <div className={styles.container}>
-        <Title>Авторизация Test</Title>
+        <Title>Авторизация</Title>
         <Form
             name="basic"
             labelCol={{ span: 8 }}
