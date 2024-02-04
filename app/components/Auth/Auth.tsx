@@ -13,7 +13,7 @@ const Auth: React.FC = () => {
         console.log('Failed:', errorInfo);
     }
 
-    return <React.Fragment>
+    return <div className={styles.container}>
         <Title>Авторизация lk.metricaonline.com</Title>
         <Form
             name="basic"
@@ -50,7 +50,7 @@ const Auth: React.FC = () => {
                 </Button>
             </Form.Item>
         </Form>
-    </React.Fragment>;
+    </div>;
 }
 
 export default Auth;
