@@ -1,56 +1,48 @@
-import React from 'react';
-import styles from './Auth.module.css';
-import { Typography, Button, Checkbox, Form, Input } from 'antd';
-
-const { Title } = Typography;
+import React, { useState, useCallback } from 'react';
+import { Button, FormControl, InputGroup, Input, InputRightElement, Box, Heading, Flex } from '@chakra-ui/react';
 
 const Auth: React.FC = () => {
-    const handleOnFinish = (values: any) => {
-        console.log('Success:', values);
+    const [show, setShow] = useState(false)
+    const [login, setLogin] = useState('');
+    const [pass, setPass] = useState('');
+
+    const handleShowPass = () => setShow(!show);
+    const handleOnChangeLogin = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        setLogin(event.target.value);
+    }, []);
+    const handleOnChangePass = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+        setPass(event.target.value);
+    }, []);
+
+    const handleOnSubmit = () => {
+        console.log(JSON.stringify({ login, pass }));
     }
 
-    const handleOnFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
-    }
-
-    return <div className={styles.container}>
-        <Title>Авторизация lk.metricaonline.com</Title>
-        <Form
-            name="basic"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
-            initialValues={{ remember: true }}
-            onFinish={handleOnFinish}
-            onFinishFailed={handleOnFinishFailed}
-            autoComplete="off"
-        >
-            <Form.Item
-                label="Username"
-                name="username"
-                rules={[{ required: true, message: 'Please input your username!' }]}
-            >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                label="Password"
-                name="password"
-                rules={[{ required: true, message: 'Please input your password!' }]}
-            >
-                <Input.Password />
-            </Form.Item>
-
-            <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-                <Checkbox>Remember me</Checkbox>
-            </Form.Item>
-
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                <Button type="primary" htmlType="submit">
-                Submit
-                </Button>
-            </Form.Item>
-        </Form>
-    </div>;
+    return <Box maxW='sm' borderWidth='1px' borderRadius='lg' p={4} m="20px auto 0">
+        <Flex justifyContent="space-around" p={0} pl={4} pb={4} pr={4}>
+            <Heading as='h4' size='md'>Авторизация</Heading>
+        </Flex>
+        <FormControl pb={4}>
+            <Input placeholder='Логин' value={login} onChange={handleOnChangeLogin} />
+        </FormControl>
+        <FormControl pb={4}>
+            <InputGroup size='md'>
+                <Input
+                    pr='4.5rem'
+                    type={show ? 'text' : 'password'}
+                    placeholder='Пароль'
+                    value={pass}
+                    onChange={handleOnChangePass}
+                />
+                <InputRightElement width='6rem'>
+                    <Button h='1.75rem' size='sm' onClick={handleShowPass}>
+                        {show ? 'Скрыть' : 'Показать'}
+                    </Button>
+                </InputRightElement>
+            </InputGroup>
+        </FormControl>
+        <Button style={{ width: '100%' }} onClick={handleOnSubmit}>Войти</Button>
+    </Box>;
 }
 
 export default Auth;
