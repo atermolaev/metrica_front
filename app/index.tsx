@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import store from './store';
 import { sagaMiddleware } from './store'
@@ -22,11 +22,12 @@ const theme = extendBaseTheme({
   }
 })
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('app') as Element);
+
+root.render(
   <ChakraBaseProvider theme={theme}>
     <Provider store={store}>
       <App />
     </Provider>
-  </ChakraBaseProvider>,
-  document.getElementById('app')
+  </ChakraBaseProvider>
 );
