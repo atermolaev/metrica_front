@@ -35,7 +35,7 @@ const Auth: React.FC = () => {
                     onChange={handleOnChangePass}
                 />
                 <InputRightElement width='6rem'>
-                    <Button h='1.75rem' size='sm' onClick={handleShowPass}>
+                    <Button w='5rem' h='1.75rem' size='sm' onClick={handleShowPass}>
                         {show ? 'Скрыть' : 'Показать'}
                     </Button>
                 </InputRightElement>
