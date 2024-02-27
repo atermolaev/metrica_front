@@ -59,6 +59,13 @@ module.exports = {
         compress: true,
         port: 9000,
         historyApiFallback: true,
+        proxy: [
+            {
+                context: '/api',
+                target: 'http://localhost:3000/',
+                pathRewrite: { '^/api': '' },
+            },
+        ],
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
