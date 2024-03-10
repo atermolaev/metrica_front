@@ -1,7 +1,11 @@
 import React, { useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { authRequest } from '../../ducks/auth/actions';
+
 import { Button, FormControl, InputGroup, Input, InputRightElement, Box, Heading, Flex } from '@chakra-ui/react';
 
 const Auth: React.FC = () => {
+    const dispatch = useDispatch();
     const [show, setShow] = useState(false)
     const [login, setLogin] = useState('');
     const [pass, setPass] = useState('');
@@ -15,7 +19,7 @@ const Auth: React.FC = () => {
     }, []);
 
     const handleOnSubmit = () => {
-        console.log(JSON.stringify({ login, pass }));
+        dispatch(authRequest({ login, pass }));
     }
 
     return <Box maxW='sm' borderWidth='1px' borderRadius='lg' p={4} m="20px auto 0">

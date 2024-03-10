@@ -71,6 +71,9 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js'],
         alias: {
             "$components": path.resolve(__dirname, 'app/components'),
+            "$ducks": path.resolve(__dirname, 'app/ducks'),
+            "$models": path.resolve(__dirname, 'app/models'),
+            "$types": path.resolve(__dirname, 'app/types'),
         }
     },
 }
