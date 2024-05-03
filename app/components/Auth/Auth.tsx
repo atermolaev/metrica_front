@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { authRequest } from '../../ducks/auth/actions';
+import { KEY_ENTER_NAME } from '$constants';
 
 import { Button, FormControl, InputGroup, Input, InputRightElement, Box, Heading, Flex } from '@chakra-ui/react';
 
@@ -22,7 +23,13 @@ const Auth: React.FC = () => {
         dispatch(authRequest({ login, pass }));
     }
 
-    return <Box maxW='sm' borderWidth='1px' borderRadius='lg' p={4} m="20px auto 0">
+    const handleKeyDown: React.KeyboardEventHandler = (event) => {
+        if(event.key != KEY_ENTER_NAME) return;
+
+        handleOnSubmit();
+    }
+
+    return <Box maxW='sm' borderWidth='1px' borderRadius='lg' p={4} m="20px auto 0" onKeyDown={handleKeyDown}>
         <Flex justifyContent="space-around" p={0} pl={4} pb={4} pr={4}>
             <Heading as='h4' size='md'>Авторизация</Heading>
         </Flex>
