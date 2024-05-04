@@ -2,6 +2,9 @@ import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { authRequest } from '../../ducks/auth/actions';
 import { KEY_ENTER_NAME } from '$constants';
+import { Image } from '@chakra-ui/react';
+import Icon from './images/loading.svg';
+import classes from './Auth.module.css';
 
 import { Button, FormControl, InputGroup, Input, InputRightElement, Box, Heading, Flex } from '@chakra-ui/react';
 
@@ -52,7 +55,10 @@ const Auth: React.FC = () => {
                 </InputRightElement>
             </InputGroup>
         </FormControl>
-        <Button style={{ width: '100%' }} onClick={handleOnSubmit}>Войти</Button>
+        <Button style={{ width: '100%' }} onClick={handleOnSubmit}>
+            Войти
+            <Icon className={classes.loadIcon} />
+        </Button>
     </Box>;
 }
 

@@ -3,3 +3,10 @@
     width: 300px;
     border: 1px #000000 solid;
 }
+
+.loadIcon {
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+}

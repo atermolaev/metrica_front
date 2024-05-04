@@ -34,27 +34,40 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     {
-                      loader: MiniCssExtractPlugin.loader,
-                      options: {
-                          esModule: false,
-                      },
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: false,
+                        },
                     },
                     {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                              localIdentName: "[name]__[local]--[hash:base64:5]",
+                                localIdentName: "[name]__[local]--[hash:base64:5]",
                             },
-                          },
+                        },
                     },
-                  ],
-            },
+                ],
+            }, {
+                test: /\.svg$/,
+                use: [
+                  {
+                    loader: "babel-loader"
+                  },
+                  {
+                    loader: "react-svg-loader",
+                    options: {
+                      jsx: true // true outputs JSX tags
+                    }
+                  }
+                ]
+              }
         ]
     },
     plugins: [new MiniCssExtractPlugin({
         filename: "[name].css",
         chunkFilename: "[id].css",
-      })],
+    })],
     devServer: {
         compress: true,
         port: 9000,
@@ -68,7 +81,7 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
         alias: {
             "$components": path.resolve(__dirname, 'app/components'),
             "$constants": path.resolve(__dirname, 'app/constants'),
