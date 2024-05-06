@@ -1,6 +1,11 @@
-export interface IAuthResultData {
+export interface IAuthResultDataBody {
     auth: boolean;
     token: string;
+}
+
+export interface IAuthResultData {
+    success: boolean;
+    body: IAuthResultDataBody;
 }
 
 export interface IAuthResult {

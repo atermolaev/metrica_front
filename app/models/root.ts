@@ -1,8 +1,7 @@
+import { IAuthResultDataBody } from './auth';
+
 export interface IRootState {
-    authReducer: {
-        login: string,
-        pass: string,
-    };
+    authReducer: IAuthResultDataBody;
     page1Reducer: {
         cource: Record<string, string>,
     };

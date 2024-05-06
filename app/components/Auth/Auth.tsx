@@ -1,10 +1,11 @@
-import React, { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { authRequest } from '../../ducks/auth/actions';
-import { KEY_ENTER_NAME } from '$constants';
-import { Image } from '@chakra-ui/react';
+import { EMPTY, KEY_ENTER_NAME } from '$constants';
 import Icon from './images/loading.svg';
 import classes from './Auth.module.css';
+import { authToken } from '$selectors';
+import { useCookies } from 'react-cookie';
 
 import { Button, FormControl, InputGroup, Input, InputRightElement, Box, Heading, Flex } from '@chakra-ui/react';
 
@@ -13,6 +14,8 @@ const Auth: React.FC = () => {
     const [show, setShow] = useState(false)
     const [login, setLogin] = useState('');
     const [pass, setPass] = useState('');
+    const token = useSelector(authToken);
+    const [cookie, setCookie] = useCookies();
 
     const handleShowPass = () => setShow(!show);
     const handleOnChangeLogin = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +34,12 @@ const Auth: React.FC = () => {
 
         handleOnSubmit();
     }
+
+    useEffect(() => {
+        if (token !== EMPTY && token !== cookie['auth-token']) {
+            setCookie('auth-token', token, { sameSite: 'strict', maxAge: 86400 });   
+        }
+    }, [token]);
 
     return <Box maxW='sm' borderWidth='1px' borderRadius='lg' p={4} m="20px auto 0" onKeyDown={handleKeyDown}>
         <Flex justifyContent="space-around" p={0} pl={4} pb={4} pr={4}>
