@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { authRequest } from '../../ducks/auth/actions';
-import { EMPTY, KEY_ENTER_NAME } from '$constants';
+import { EMPTY, KEY_ENTER_NAME, COOKIE_AUTH_NAME, COOKIE_AUTH_TIME } from '$constants';
 import Icon from './images/loading.svg';
 import classes from './Auth.module.css';
-import { authToken } from '$selectors';
+import { authDataSelector } from '$selectors';
 import { useCookies } from 'react-cookie';
 
 import { Button, FormControl, InputGroup, Input, InputRightElement, Box, Heading, Flex } from '@chakra-ui/react';
@@ -14,8 +14,10 @@ const Auth: React.FC = () => {
     const [show, setShow] = useState(false)
     const [login, setLogin] = useState('');
     const [pass, setPass] = useState('');
-    const token = useSelector(authToken);
+    const authData = useSelector(authDataSelector);
     const [cookie, setCookie] = useCookies();
+
+    const token = authData.token;
 
     const handleShowPass = () => setShow(!show);
     const handleOnChangeLogin = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,8 +38,8 @@ const Auth: React.FC = () => {
     }
 
     useEffect(() => {
-        if (token !== EMPTY && token !== cookie['auth-token']) {
-            setCookie('auth-token', token, { sameSite: 'strict', maxAge: 86400 });   
+        if (token !== EMPTY && token !== cookie[COOKIE_AUTH_NAME] && authData.auth) {
+            setCookie(COOKIE_AUTH_NAME, token, { sameSite: 'strict', maxAge: COOKIE_AUTH_TIME });   
         }
     }, [token]);
 

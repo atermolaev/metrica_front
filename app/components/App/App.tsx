@@ -11,12 +11,17 @@ import {
   Auth, 
   Grid 
 } from '$components';
+import { useCookies } from 'react-cookie';
+import { COOKIE_AUTH_NAME, EMPTY } from '$constants';
 
 const App: React.FC = () => {
+  const [cookie] = useCookies();
+
+  if (cookie[COOKIE_AUTH_NAME] === EMPTY || cookie[COOKIE_AUTH_NAME] === undefined) return <Auth />;
+
   return (
     <Router>
-      <Route exact path="/" component={Auth} />
-      <Route path="/main">
+      <Route path="/">
         <Container>
           <Grid>
             <Grid>
@@ -30,9 +35,9 @@ const App: React.FC = () => {
             </Grid>
             <Grid>
               <Switch>
-                <Route path="/main/home" component={Home} />
-                <Route path="/main/page1" component={Page1} />
-                <Route path="/main/page2" component={Page2} />
+                <Route path="/home" component={Home} />
+                <Route path="/page1" component={Page1} />
+                <Route path="/page2" component={Page2} />
               </Switch>
             </Grid>
           </Grid>

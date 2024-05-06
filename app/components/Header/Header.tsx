@@ -6,9 +6,9 @@ const Header: React.FC = () => {
     return (
         <React.Fragment>
             <ul className={styles.menu}>
-                <li><Link to='/main/home'>Home</Link></li>
-                <li><Link to='/main/page1'>Page1</Link></li>
-                <li><Link to='/main/page2'>Page2</Link></li>
+                <li><Link to='/home'>Home</Link></li>
+                <li><Link to='/page1'>Page1</Link></li>
+                <li><Link to='/page2'>Page2</Link></li>
             </ul>
         </React.Fragment>
     )

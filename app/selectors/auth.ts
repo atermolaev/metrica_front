@@ -1,6 +1,9 @@
 import { createSelector } from 'reselect';
 import { IRootState } from '$models';
 
-export const authToken = createSelector((state: IRootState) => state.authReducer, auth => {
+export const authTokenSelector = createSelector((state: IRootState) => state.authReducer, auth => {
     return auth.token;
-})   
+});
+
+export const authDataSelector = createSelector((state: IRootState) => state.authReducer, auth => auth);
+
