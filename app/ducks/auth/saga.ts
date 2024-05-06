@@ -6,15 +6,11 @@ import {
     authFailure,
     authRequest,
 } from './actions';
-import { IAuthPayload } from '../../types';
-
-interface IResult {
-    data: string[];
-}
+import { IAuthResult } from '$models';
 
 function* authorization({ payload } : ReturnType<typeof authRequest>){
     try{
-        const result: IResult = yield call(sendAuthData, payload);
+        const result: IAuthResult = yield call(sendAuthData, payload);
 
         yield put(authSuccess(result.data));
     } catch(error) {

@@ -1,4 +1,4 @@
-import { IAuthPayload } from '$types';
+import { IAuthPayload, IAuthResultData } from '$models';
 import * as cnst from './constants';
 
 export const authRequest = (payload: IAuthPayload) => ({
@@ -6,7 +6,7 @@ export const authRequest = (payload: IAuthPayload) => ({
     payload,
 })
 
-export const authSuccess = (payload: string[]) => ({
+export const authSuccess = (payload: IAuthResultData) => ({
     type: cnst.AUTH_SUCCESS,
     payload,
 })
