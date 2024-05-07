@@ -1,7 +1,7 @@
 import { IAuthResultDataBody } from './auth';
 
 export interface IRootState {
-    authReducer: IAuthResultDataBody;
+    authReducer: IAuthResultDataBody & { isFetching: boolean; };
     page1Reducer: {
         cource: Record<string, string>,
     };

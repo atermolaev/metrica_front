@@ -1,3 +1,25 @@
+@keyframes horizontal-shaking {
+    0% {
+        transform: translateX(0)
+    }
+
+    25% {
+        transform: translateX(5px)
+    }
+
+    50% {
+        transform: translateX(-5px)
+    }
+
+    75% {
+        transform: translateX(5px)
+    }
+
+    100% {
+        transform: translateX(0)
+    }
+}
+
 .container {
     margin: 0 auto;
     width: 300px;
@@ -9,4 +31,15 @@
     height: 20px;
     margin-top: 10px;
     margin-left: 10px;
+}
+
+.errorBox {
+    color: red;
+    opacity: 0;
+    display: inline-block;
+}
+
+.errorBoxVisible {
+    opacity: 1;
+    animation: horizontal-shaking 1s;
 }

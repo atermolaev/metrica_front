@@ -5,5 +5,6 @@ export const authTokenSelector = createSelector((state: IRootState) => state.aut
     return auth.token;
 });
 
-export const authDataSelector = createSelector((state: IRootState) => state.authReducer, auth => auth);
+export const authStatusSelector = createSelector((state: IRootState) => state.authReducer, auth => auth.auth);
 
+export const authFetchingSelector = createSelector((state: IRootState) => state.authReducer, auth => auth.isFetching);
