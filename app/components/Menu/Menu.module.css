@@ -1,0 +1,25 @@
+ul.menu {
+    display: block;
+    list-style: inside none;
+    margin: 0;
+    margin-inline-start: 0;
+    -webkit-margin-start: 0;
+}
+
+ul.menuLine {
+    border-bottom: 1px #000000 solid;
+}
+
+.menu li {
+    display: block;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.menu li a:hover {
+    color: #1890ff;
+    border-bottom: 3px #1890ff solid;
+}

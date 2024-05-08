@@ -1,4 +1,4 @@
 .sidebar{
-    float : left;
-    width : 200px
+    border-right: 1px #000000 solid;
+    min-height: 100vh;
 }

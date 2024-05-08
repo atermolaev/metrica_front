@@ -1,18 +1,16 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import { 
-  Header, 
-  SideBar, 
-  Home, 
-  Page1, 
-  Page2, 
-  Logo, 
-  Container, 
-  Auth, 
-  Grid 
+import {
+  SideBar,
+  Home,
+  Page1,
+  Page2,
+  Container,
+  Auth,
 } from '$components';
 import { useCookies } from 'react-cookie';
 import { COOKIE_AUTH_NAME, EMPTY } from '$constants';
+import { Grid, GridItem } from '@chakra-ui/react';
 
 const App: React.FC = () => {
   const [cookie] = useCookies();
@@ -23,23 +21,17 @@ const App: React.FC = () => {
     <Router>
       <Route path="/">
         <Container>
-          <Grid>
-            <Grid>
-              <Logo />
-            </Grid>
-            <Grid>
-              <Header />
-            </Grid>
-            <Grid>
+          <Grid templateColumns="repeat(5, 1fr)">
+            <GridItem colSpan={1} > 
               <SideBar />
-            </Grid>
-            <Grid>
+            </GridItem>
+            <GridItem colSpan={4}>
               <Switch>
                 <Route path="/home" component={Home} />
                 <Route path="/page1" component={Page1} />
                 <Route path="/page2" component={Page2} />
               </Switch>
-            </Grid>
+            </GridItem>            
           </Grid>
         </Container>
       </Route>
