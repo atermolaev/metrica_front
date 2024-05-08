@@ -23,3 +23,14 @@ ul.menuLine {
     color: #1890ff;
     border-bottom: 3px #1890ff solid;
 }
+
+.exitItem {
+    text-decoration: none;
+    color: #000000;
+    cursor: pointer;
+}
+
+.exitItem:hover {
+    color: #1890ff;
+    border-bottom: 3px #1890ff solid;
+}

@@ -47,7 +47,7 @@ const Auth: React.FC = () => {
         if (authToken !== EMPTY && authToken !== cookie[COOKIE_AUTH_NAME] && authStatus) {
             setCookie(COOKIE_AUTH_NAME, authToken, { sameSite: 'strict', maxAge: COOKIE_AUTH_TIME });   
         }
-    }, [authToken]);
+    }, [authToken, authStatus]);
 
     const classesErrorBox = classNames({
         [classes.errorBox]: true,
