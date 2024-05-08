@@ -27,7 +27,7 @@ const App: React.FC = () => {
             </GridItem>
             <GridItem colSpan={4}>
               <Switch>
-                <Route path="/home" component={Home} />
+                <Route exact path="/" component={Home} />
                 <Route path="/page1" component={Page1} />
                 <Route path="/page2" component={Page2} />
               </Switch>

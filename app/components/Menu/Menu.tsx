@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import classNames from 'classnames';
 import { authReset } from '$ducks/auth/actions';
 import classes from './Menu.module.css';
@@ -12,9 +12,12 @@ import { COOKIE_AUTH_NAME } from '$constants';
 const MenuComponent: React.FC = () => {
     const dispatch = useDispatch();
     const [,, removeCookie] = useCookies()
+    const history = useHistory();
+
     const handleOnExit = () => {
         dispatch(authReset());
         removeCookie(COOKIE_AUTH_NAME);
+        history.push('/');
     };
 
     return (
@@ -22,7 +25,7 @@ const MenuComponent: React.FC = () => {
             <UnorderedList className={classNames(classes.menu, classes.menuLine)} pt={4} pb={5}>
                 <ListItem>
                     <ListIcon as={ChevronRightIcon} />
-                    <Link to='/home'>Home</Link>
+                    <Link to='/'>Home</Link>
                 </ListItem>
                 <ListItem>
                     <ListIcon as={ChevronRightIcon} />
