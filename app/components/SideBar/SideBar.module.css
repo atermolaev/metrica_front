@@ -1,4 +1,4 @@
 .sidebar{
-    border-right: 1px #000000 solid;
+    border-right: 1px var(--chakra-colors-gray-300) solid;
     min-height: 100vh;
 }

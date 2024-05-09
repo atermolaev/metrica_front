@@ -1,4 +1,4 @@
 .logo {
     display: inline-block;
-    border-bottom: 1px #000000 solid;
+    border-bottom: 1px var(--chakra-colors-gray-300) solid;
 }

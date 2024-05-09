@@ -11,6 +11,7 @@ import {
 import { useCookies } from 'react-cookie';
 import { COOKIE_AUTH_NAME, EMPTY } from '$constants';
 import { Grid, GridItem } from '@chakra-ui/react';
+import classes from './App.module.css';
 
 const App: React.FC = () => {
   const [cookie] = useCookies();
@@ -21,7 +22,7 @@ const App: React.FC = () => {
     <Router>
       <Route path="/">
         <Container>
-          <Grid templateColumns="repeat(5, 1fr)">
+          <Grid className={classes.container} templateColumns="repeat(5, 1fr)">
             <GridItem colSpan={1} > 
               <SideBar />
             </GridItem>
