@@ -89,6 +89,7 @@ module.exports = {
             "$ducks": path.resolve(__dirname, 'app/ducks'),
             "$models": path.resolve(__dirname, 'app/models'),
             "$types": path.resolve(__dirname, 'app/types'),
+            "$utils": path.resolve(__dirname, 'app/utils'),
         }
     },
 }
