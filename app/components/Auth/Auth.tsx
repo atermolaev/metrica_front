@@ -56,7 +56,7 @@ const Auth: React.FC = () => {
 
     return <Box maxW='sm' borderWidth='1px' borderRadius='lg' p={4} m="20px auto 0" onKeyDown={handleKeyDown}>
         <Flex justifyContent="space-around" p={0} pl={4} pb={12} pr={4}>
-            <Heading as='h4' size='md'>Авторизация2</Heading>
+            <Heading as='h4' size='md'>Авторизация</Heading>
         </Flex>
         <FormControl pb={4}>
             <Input placeholder='Логин' value={login} onChange={handleOnChangeLogin} />
